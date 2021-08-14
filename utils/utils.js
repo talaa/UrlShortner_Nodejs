@@ -3,5 +3,13 @@ function validateUrl(value) {
     value
   );
 }
+///////
+function validateorigin(value){
+  if (value)
+    return value
+  else{
+    return "undefined"
+  }
+}
 
-module.exports = { validateUrl };
+module.exports = { validateUrl,validateorigin };

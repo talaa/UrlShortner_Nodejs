@@ -1,7 +1,8 @@
 const Express = require('Express');
+
 const app = Express();
 const connectDB = require('./config/db');
-const ShortURL = require('./models/Url')
+const ShortURL = require('./models/UrlDBSchema')
 
 // Prepare the Frontend views 
 app.set('views', './views');
@@ -10,7 +11,7 @@ app.set('view engine', 'ejs');
 // Main page
 app.get('/main', async function(req, res) {
   const allData = await ShortURL.find()
-  res.render('index', { shortUrls: allData });
+  res.render('main', { shortUrls: allData });
 });
 
 
@@ -20,7 +21,9 @@ connectDB()
 // Body Parser
 app.use(Express.urlencoded({ extended: true }));
 app.use(Express.json());
-app.use('/api', require('./routes/urls'));
+
+app.use('/', require('./routes/get'));
+app.use('/api', require('./routes/create'));
 
 // Server Setup
 const PORT = 3333;
