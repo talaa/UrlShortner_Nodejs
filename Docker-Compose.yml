@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  #SQL Services
+  
+
+  #App Container services 
+  app:
+    build: .
+    container_name: UrlShortner-APP
+    ports:
+      - 3333:3333
+    environment:
+      - PORT=3333
+      #- MONGO_URI= mongo-db://mongodb:27107/app
+      - MONGO_URI= mongodb+srv://UrldbAdmin:UrlDbPass@cluster0.pvikx.mongodb.net/URLShortDB?retryWrites=true&w=majority
+      #- DB_Name= URLShortDB
+      - Name= Tamer Alaa
+    

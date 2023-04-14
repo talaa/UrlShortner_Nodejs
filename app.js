@@ -1,4 +1,4 @@
-const Express = require('Express');
+const Express = require('express');
 
 const app = Express();
 const connectDB = require('./config/db');
@@ -26,7 +26,7 @@ app.use('/', require('./routes/get'));
 app.use('/api', require('./routes/create'));
 
 // Server Setup
-const PORT = 3333;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running at PORT ${PORT}`);
 });

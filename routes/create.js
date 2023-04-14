@@ -37,13 +37,16 @@ router.post('/short', async (req, res) => {
   
           await url.save();
           res.json(url);
+          res.redirect('/main'); // redirect to /main route
         }
       } catch (err) {
         console.log(err);
-        res.status(500).json('Server Error');
+        //res.status(500).json('Server Error');
+        res.redirect('/error'); // redirect to /error route
       }
     } else {
       res.status(400).json('Invalid Original Url');
+      res.redirect('/invalid'); // redirect to /invalid route
     }
   });
   

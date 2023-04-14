@@ -3,6 +3,8 @@ const router = Express.Router();
 const Url = require('../models/UrlDBSchema');
 const utils = require('../utils/utils');
 var geoip = require('geoip-lite');
+//const requestIp = require('request-ip');
+//const geoip = require('geoip-lite');
 
 
 router.get('/:urlId', async (req, res) => {
@@ -12,6 +14,9 @@ router.get('/:urlId', async (req, res) => {
      // get the ip Address of the user
      const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
      var userIP = req.socket.remoteAddress
+     if (ip.startsWith('::ffff:')) {
+      ip = ip.replace('::ffff:', '');
+    }
      console.log(ip); // ip address of the user
      console.log("The user IP is:",userIP); // ip address of the user
      console.log(geoip.lookup(ip)); // location of the user
