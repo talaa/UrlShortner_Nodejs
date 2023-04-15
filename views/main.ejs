@@ -9,6 +9,7 @@
   			body { padding-top:50px; }
 		</style>
 		<title>URL Shortner Project</title>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -32,6 +33,7 @@
 						<th>Full URL</th>
 						<th>Short URL</th>
 						<th>Clicks</th>
+						<th>Acc Clicks</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,10 +42,20 @@
 						<td><a href="<%= shortUrl.origUrl %>"><%= shortUrl.origUrl %></a></td>
 						<td><a href="<%= shortUrl.shortUrl %>"><%= shortUrl.shortUrl %></a></td>
 						<td><%= shortUrl.clicks %></td>
+						<td>
+							<a href="/urls/<%= shortUrl._id %>">
+								<button class="btn btn-primary"><%= shortUrl.clicks %></button>
+							  </a>
+						</td>
+						
 					</tr>
 					<% }) %>
 				</tbody>
 			</table>
+			
 		</div>
+		<!-- Add Bootstrap JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	</body>
+	
 </html>
