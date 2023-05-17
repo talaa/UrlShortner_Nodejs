@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- CSS (load bootstrap from a CDN) -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-		<style>
-  			body { padding-top:50px; }
-		</style>
-		<title>URL Shortner Project</title>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	</head>
-	<body>
+<%- include('common/header'); -%>
+<body>
+		<%- include('common/Navbar'); -%>
 		<div class="container">
 			<h1>URL Shrinker</h1>
-			<form action="/api/short" method="POST" class="my-4 form-inline">
+			<form action="/api/short" method="POST" class="row gy-2 gx-3 align-items-center">
 				<label for="origUrl" class="sr-only">URL</label>
-				<input
+				<div class="col-9">
+					<input
 					required
 					placeholder="URL"
 					type="url"
 					name="origUrl"
 					id="origUrl"
 					class="form-control col mr-2"
-				/>
-				<button class="btn btn-success" type="submit">Shrink This!</button>
+					/>
+				</div>
+				<div class="col-auto">
+					<button class="btn btn-success" type="submit">Shrink This!</button>
+				</div>
+				
 			</form>
 
 			<table class="table table-striped table-responsive">
@@ -55,7 +49,9 @@
 			
 		</div>
 		<!-- Add Bootstrap JavaScript -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+			
+		<%- include('common/scripts'); -%>	
+		
 	</body>
-	
+	<%- include('common/footer'); -%>	
 </html>
